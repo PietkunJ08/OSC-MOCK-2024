@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="main-bg-img">
+    <main>
+        <h1>Hotel Booking</h1>
+        <div id="center-content">
+            <form method="post">
+                <label for="adults">Adults:</label>
+                <input type="number" name="adults" required><br><br>
+                <label for="children">Children:</label>
+                <input type="number" name="children" required><br><br>
+                <label for="room-type">Room Type:</label>
+                <select name="room-type">
+                    <option value="standard" selected>Standard</option>
+                    <option value="premium">Premium</option>
+                    <option value="luxury">Luxury</option>
+                    <option value="ultimate">Ultimate</option>
+                </select><br><br>
+                <label for="rooms">Rooms:</label>
+                <input type="number" name="rooms" required><br><br>
+                <button type="submit">Book</button>
+            </form>
+        </div>
+    </main>
+</div>
+{% endblock %}

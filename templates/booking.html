@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="main-bg-img">
+    <main>
+        <h1>Booking</h1>
+        <div id="booking-content">
+            <div class="ticket-booking">
+                <h2>Ticket Booking</h2>
+                <img src="{{ url_for('static', filename='images/ticket_icon.png') }}">
+                <button class="booking-button"><a href="{{ url_for('ticket_booking') }}">BOOK</a></button>
+            </div>
+            <div class="hotel-booking">
+                <h2>Hotel Booking</h2>
+                <img src="{{ url_for('static', filename='images/hotel_icon.png') }}">
+                <button class="booking-button"><a href="{{ url_for('hotel_booking') }}">BOOK</a></button>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}

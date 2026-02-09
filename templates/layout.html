@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <Title>Riget Zoo Adventures</Title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="icon" href="{{ url_for('static', filename='images/RZA_Logo.png') }}">
+    </head>
+    <body>
+        <div class="bg-img" style="background-image: url('../static/images/bamboo.jpg');">
+            <nav>
+                <ul>
+                    <img class="logo" src="{{ url_for('static', filename='images/RZA_Logo.png') }}" alt="RZA_Logo">
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('booking') }}">Booking</a></li>
+                    <li><a href="{{ url_for('education') }}">Education</a></li>
+                </ul>
+                <div class="flash-center">
+                    {% with messages = get_flashed_messages() %}
+                      {% if messages %}
+                          {% for message in messages %}
+                              <div class="alert">{{ message }}</div>
+                          {% endfor %}
+                      {% endif %}
+                    {% endwith %}
+                </div>
+            </nav>
+            
+            <div class="dropdown">
+                <button class="drop-button">
+                    <img src="{{ url_for('static', filename='images/account_icon.png') }}" height="55px">
+                </button>
+                <div class="drop-content">
+                    {% if session.get('email') %}
+                        {% with email = session['email'] %}
+                            {% if email == 'admin@rza.zoo' %}
+                                <a href="{{ url_for('admin_account') }}">Account</a>
+                                <a href="{{ url_for('logout') }}">Logout</a>
+                            {% else %}
+                                <a href="{{ url_for('account') }}">Account</a>
+                                <a href="{{ url_for('logout') }}">Logout</a>
+                            {% endif %}
+                        {% endwith %}
+                    {% else %}
+                        <a href="{{ url_for('login') }}">Login</a>
+                        <a href="{{ url_for('register') }}">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% block content %}{% endblock %}
+        <footer>
+            <p><a href="{{ url_for('terms_and_conditions') }}">Terms and Conditions</a><br><a href="{{ url_for('privacy_policy') }}">Privacy Policy</a></p>
+            <p class="right-footer">Copyright by Jakub Pietkun 2026&copy; </p>
+        </footer>
+    </body>
+</html>

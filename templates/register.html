@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="main-bg-img">
+    <main>
+        <h1>Register</h1>
+        <br>
+        <div id="center-content">
+            <form method="post">
+                Email: <input type="email" name="email" required><br><br>
+                Password: <input type="password" name="password" required><br><br>
+                <button type="submit">Sign Up</button>
+            </form>
+            <a href="{{ url_for('login') }}">Already have an account? Login</a>
+        </div>
+    </main>
+</div>
+{% endblock %}

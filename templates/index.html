@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="main-bg-img">
+    <main>
+        <h1>Home</h1>
+        <div id="center-content">
+            <p>The Riget Zoo Adventures website provides lots of information about the Zoo itself and the 4-star Hotel that neighbours it.</p>
+            {% if session.get('email') %}
+                <p class="welcome">WELCOME</p>
+            {% else %}
+                <p>To <strong>Login</strong> or <strong>Register</strong> click below</p>
+                <p><a href="{{ url_for('login') }}">Login</a> <a href="{{ url_for('register') }}">Register</a></p>
+            {% endif %}
+        </div>
+    </main>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="main-bg-img">
+    <main>
+        <h1>Ticket Booking</h1>
+        <div id="center-content">
+            <form method="post">
+                <label for="ticket-type">Ticket Type:</label>
+                <select name="ticket-type">
+                    <option value="peak" selected>Peak</option>
+                    <option value="off-peak">Off-Peak</option>
+                </select><br><br>
+                <label for="adult-tickets">Adult Tickets:</label>
+                <input type="number" name="adult-tickets" required><br><br>
+                <label for="child-tickets">Child Tickets:</label>
+                <input type="number" name="child-tickets" required><br><br>
+                <label for="student-tickets">Student Tickets:</label>
+                <input type="number" name="student-tickets" required><br><br>
+                <label for="senior-tickets">Senior Tickets:</label>
+                <input type="number" name="senior-tickets" required><br><br>
+                <label for="family-tickets">Family Tickets:</label>
+                <input type="number" name="family-tickets" required><br><br>
+                <button type="submit">Book</button>
+            </form>
+        </div>
+    </main>
+</div>
+{% endblock %}
