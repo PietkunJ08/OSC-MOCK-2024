@@ -158,9 +158,12 @@ main a:hover {
 
 /* Index page content on login */
 .welcome {
-    font-size: 20px;
+    margin-top: 15px;
+    margin-left: 155px;
+    padding: 0;
+    font-size: 30px;
     font-weight: 600;
-    color: #156b00;
+    color: #000000;
 }
 
 /* Terms & Conditions page content */
@@ -170,18 +173,50 @@ main a:hover {
 
 /* Booking center content */
 #booking-content {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-row {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    padding-bottom: 0;
+}
 
+.booking-button {
+    background-color: #b3cfab;
+    color: #1b4d0e;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.booking-button:hover {
+    background-color: #7fc970;
+}
+
+.school-visits {
+    margin-top: 0;
+    background-color: #1b4d0e;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.school-visits:hover {
+    background-color: #3ba820;
 }
 
 /* Ticket booking section on the booking page */
 .ticket-booking {
-    padding: 200px;
+    display: flex;
+    flex-direction: column;
+    padding: 150px;
+    align-items: center;
 }
 .ticket-booking img {
     height: 200px;
@@ -190,7 +225,10 @@ main a:hover {
 
 /* Hotel booking section on the booking page */
 .hotel-booking {
-    padding: 200px
+    display: flex;
+    flex-direction: column;
+    padding: 150px;
+    align-items: center;
 }
 .hotel-booking img {
     height: 200px;

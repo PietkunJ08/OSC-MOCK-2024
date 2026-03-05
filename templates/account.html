@@ -1,11 +1,53 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="main-bg-img">
-    <main>
+<div class="main-bg-img" role="img">
+    <main role="main">
         <h1>Account</h1>
         <div id="center-content">
-            <p></p>
+            <h2>Your Details</h2>
+            <p><strong>Username:</strong> {{ current_user.username }}</p>
+            <p><strong>Email:</strong> {{ current_user.email }}</p>
+
+            <h2>Your Ticket Bookings</h2>
+
+            {% if ticket_bookings %}
+                {% for booking in ticket_bookings %}
+                    <div class="booking-box">
+                        <p>Type: {{ booking[1] }}</p>
+                        <p>Adults: {{ booking[2] }}</p>
+                        <p>Children: {{ booking[3] }}</p>
+                        <p>Students: {{ booking[4] }}</p>
+                        <p>Seniors: {{ booking[5] }}</p>
+                        <p>Family: {{ booking[6] }}</p>
+
+                        <form method="POST" action="{{  url_for('delete_ticket_booking', booking_id=booking[0])  }}">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No ticket bookings found.</p>
+            {% endif %}
+
+            <h2>Your Hotel Bookings</h2>
+
+            {% if hotel_bookings %}
+                {% for booking in hotel_bookings %}
+                    <div class="booking-box">
+                        <p>Adults: {{ booking[1] }}</p>
+                        <p>Children: {{ booking[2] }}</p>
+                        <p>Room Type: {{ booking[3] }}</p>
+                        <p>Rooms: {{ booking[4] }}</p>
+
+                        <form method="POST" action="{{  url_for('delete_hotel_booking', booking_id=booking[0])  }}">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No hotel bookings found.</p>
+            {% endif %}
         </div>
     </main>
 </div>

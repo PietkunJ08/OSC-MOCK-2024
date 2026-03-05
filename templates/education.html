@@ -1,11 +1,23 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="main-bg-img-edu">
-    <main>
+<div class="main-bg-img-edu" role="img">
+    <main role="main">
         <h1>Education</h1>
-        <div id="center-content">
-            <p></p>
+        <div id="booking-content">
+            <div class="top-row">
+                <div class="ticket-booking">
+                    <h2>Worksheets</h2>
+                    <img src="{{ url_for('static', filename='images/ticket_icon.png') }}" alt="">
+                    <a href="{{ url_for('worksheets') }}" class="booking-button">LEARN MORE</a>
+                </div>
+                <div class="hotel-booking">
+                    <h2>Animals</h2>
+                    <img src="{{ url_for('static', filename='images/hotel_icon.png') }}" alt="">
+                    <a href="{{ url_for('animals') }}" class="booking-button">LEARN MORE</a>
+                </div>
+            </div>
+            <a href="{{ url_for('school_visits') }}" class="school-visits" role="button">School Visits</a>
         </div>
     </main>
 </div>

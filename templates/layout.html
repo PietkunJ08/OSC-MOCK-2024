@@ -7,13 +7,16 @@
         <link rel="icon" href="{{ url_for('static', filename='images/RZA_Logo.png') }}">
     </head>
     <body>
-        <div class="bg-img" style="background-image: url('../static/images/bamboo.jpg');">
-            <nav>
+        <div class="bg-img" role="img" style="background-image: url('../static/images/bamboo.jpg');">
+            <nav role="navigation">
                 <ul>
-                    <img class="logo" src="{{ url_for('static', filename='images/RZA_Logo.png') }}" alt="RZA_Logo">
-                    <li><a href="{{ url_for('index') }}">Home</a></li>
-                    <li><a href="{{ url_for('booking') }}">Booking</a></li>
-                    <li><a href="{{ url_for('education') }}">Education</a></li>
+                    <img class="logo" src="{{ url_for('static', filename='images/RZA_Logo.png') }}" alt="Regit Zoo Adventures Logo">
+                    <li><a href="{{ url_for('index') }}" role="button">Home</a></li>
+                    <li><a href="{{ url_for('booking') }}" role="button">Booking</a></li>
+                    <li><a href="{{ url_for('education') }}" role="button">Education</a></li>
+                    {% if current_user.is_authenticated %}
+                        <li><h2 class="welcome">Welcome, {{ current_user.username }}</h2></li>
+                    {% endif %}
                 </ul>
                 <div class="flash-center">
                     {% with messages = get_flashed_messages() %}
@@ -28,19 +31,12 @@
             
             <div class="dropdown">
                 <button class="drop-button">
-                    <img src="{{ url_for('static', filename='images/account_icon.png') }}" height="55px">
+                    <img src="{{ url_for('static', filename='images/account_icon.png') }}" height="55px" alt="Account Icon">
                 </button>
                 <div class="drop-content">
-                    {% if session.get('email') %}
-                        {% with email = session['email'] %}
-                            {% if email == 'admin@rza.zoo' %}
-                                <a href="{{ url_for('admin_account') }}">Account</a>
-                                <a href="{{ url_for('logout') }}">Logout</a>
-                            {% else %}
-                                <a href="{{ url_for('account') }}">Account</a>
-                                <a href="{{ url_for('logout') }}">Logout</a>
-                            {% endif %}
-                        {% endwith %}
+                    {% if current_user.is_authenticated %}
+                        <a href="{{ url_for('admin_account') if current_user.is_admin else url_for('account') }}" role="button">Account</a>
+                        <a href="{{ url_for('logout') }}" role="button">Logout</a>
                     {% else %}
                         <a href="{{ url_for('login') }}">Login</a>
                         <a href="{{ url_for('register') }}">Register</a>
@@ -49,7 +45,7 @@
             </div>
         </div>
         {% block content %}{% endblock %}
-        <footer>
+        <footer role="contentinfo">
             <p><a href="{{ url_for('terms_and_conditions') }}">Terms and Conditions</a><br><a href="{{ url_for('privacy_policy') }}">Privacy Policy</a></p>
             <p class="right-footer">Copyright by Jakub Pietkun 2026&copy; </p>
         </footer>
