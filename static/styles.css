@@ -186,6 +186,7 @@ main a:hover {
 }
 
 .booking-button {
+    margin-top: 10px;
     background-color: #b3cfab;
     color: #1b4d0e;
     padding: 5px 10px;
